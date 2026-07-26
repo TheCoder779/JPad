@@ -8,6 +8,8 @@ public class Gui extends JPanel implements Runnable {
     public final long DELTA_TIME_MILLIS = (long) (1000.0 / FPS);
     public Thread JPadThread;
     public TextCursor textCursor;
+    public int blinkTicks = 30;
+    public int blinkTicksCounter = 0;
 
     public Gui(){
         setBounds(0,0,500,500);
@@ -20,11 +22,12 @@ public class Gui extends JPanel implements Runnable {
     @Override
     public void run() {
         long lastTime = System.nanoTime();
+        double delta = 1000000000.0 / FPS;
         double timeLeft = 0;
-        long currentTime;
+
         while (JPadThread != null) {
-            currentTime = System.nanoTime();
-            timeLeft += (double) (currentTime - lastTime) / DELTA_TIME_MILLIS;
+            long currentTime = System.nanoTime();
+            timeLeft += (currentTime - lastTime) / delta;
             lastTime = currentTime;
 
             while (timeLeft >= 1) {
@@ -33,8 +36,8 @@ public class Gui extends JPanel implements Runnable {
                 timeLeft--;
             }
         }
-
     }
+
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -43,6 +46,12 @@ public class Gui extends JPanel implements Runnable {
     }
 
     private void update() {
-        textCursor.blink();
+        if(blinkTicksCounter >= blinkTicks) {
+            textCursor.blink();
+            blinkTicksCounter = 0;
+        }
+        else {
+            blinkTicksCounter++;
+        }
     }
 }

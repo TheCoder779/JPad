@@ -30,6 +30,7 @@ public class TextCursor {
             } catch (IOException e) {
                 System.out.println("Could not load TextCursor image");
             }
+            isVisible = false;
         }
         else  {
             try {
@@ -37,6 +38,7 @@ public class TextCursor {
             } catch (IOException e) {
                 System.out.println("Could not load TextCursorBlank image");
             }
+            isVisible = true;
         }
     }
 
