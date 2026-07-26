@@ -16,7 +16,6 @@ public class JPad extends JFrame {
         setSize(STARTUP_SIZE, STARTUP_SIZE);
         setPreferredSize(new Dimension(STARTUP_SIZE, STARTUP_SIZE));
         setResizable(true);
-
         add(new Gui());
     }
 }
