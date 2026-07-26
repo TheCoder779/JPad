@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class Gui extends JPanel implements Runnable {
     public final int FPS = 60;
-    public final long DELTA_TIME_MILLIS = (long) (1000.0 / FPS);
     public Thread JPadThread;
     public TextCursor textCursor;
     public int blinkTicks = 30;
