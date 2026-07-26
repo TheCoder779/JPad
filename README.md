@@ -1,1 +1,1 @@
-This is a readme and i hate parallel branches so i will edit in intellij
+This is an open source text editor built off of java.
